@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 11:49:33 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/20 12:09:15 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/20 12:26:50 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,15 @@ Form::~Form() {}
 Form::Form(const std::string &name,
 		   int requiredSignItGrade,
 		   int requiredExecuteItGrade) : _name(name),
+										 _isSigned(false),
 										 _requiredSignItGrade(requiredSignItGrade),
-										 _requiredExecuteItGrade(requiredExecuteItGrade),
-										 _isSigned(false) {};
+										 _requiredExecuteItGrade(requiredExecuteItGrade)
+{
+	if (requiredSignItGrade < 1 || requiredExecuteItGrade < 1)
+		throw GradeTooHighException();
+	else if (requiredSignItGrade > 150 || requiredExecuteItGrade > 150)
+		throw GradeTooLowException();
+};
 
 /* *** Getters *** */
 
@@ -82,10 +88,10 @@ std::ostream &operator<<(std::ostream &os, const Form &src)
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return "Form grade too high!";
+	return "Grade too high!\n";
 }
 
 const char *Form::GradeTooLowException::what() const throw()
 {
-	return "Form grade too low!";
+	return "Grade too low!\n";
 }
