@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 09:56:36 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/20 11:46:43 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/20 12:08:28 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ public:
 	void incrementGrade();
 	void decrementGrade();
 
-	void signForm(const Form &form) const;
+	void signForm(Form &form) const;
 
 	// Internal Exceptions
 	class GradeTooHighException : public std::exception

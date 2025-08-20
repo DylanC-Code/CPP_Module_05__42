@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 10:00:07 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/20 11:54:18 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/20 12:11:34 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,21 @@ void Bureaucrat::decrementGrade()
 	this->_grade++;
 }
 
+void Bureaucrat::signForm(Form &form) const
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << this->_name << " signed " << form.getName() << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << this->_name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+/* *** Internal Exceptions *** */
+
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Grade too high !");
@@ -75,6 +90,8 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low !");
 }
+
+/* *** Operators Overload *** */
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 {
