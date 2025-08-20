@@ -6,42 +6,45 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 09:56:36 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/20 10:30:45 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/20 11:18:48 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
+#include <iostream>
 #include <string>
 
 class Bureaucrat
 {
 private:
-	const std::string name;
-	unsigned int grade;
+	const std::string _name;
+	int _grade;
 
 public:
-	Bureaucrat(const std::string &name, unsigned int grade);
+	// Canonical Form
 	Bureaucrat(Bureaucrat const &src);
 	~Bureaucrat();
 	Bureaucrat &operator=(Bureaucrat const &src);
 
+	// Custom Constructor
+	Bureaucrat(const std::string &name, int grade);
+
+	// Getters
 	const std::string &getName() const;
-	unsigned int &getGrade() const;
+	int getGrade() const;
 
 	void incrementGrade();
 	void decrementGrade();
 
+	// Internal Exceptions
 	class GradeTooHighException : public std::exception
 	{
-	public:
 		virtual const char *what() const throw();
 	};
-
 	class GradeTooLowException : public std::exception
 	{
-	public:
 		virtual const char *what() const throw();
 	};
 };
