@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 10:00:07 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/20 11:19:01 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/20 11:59:25 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* *** Canonical Form *** */
 
-Bureaucrat::Bureaucrat(Bureaucrat const &src)
+Bureaucrat::Bureaucrat(Bureaucrat const &src) : _name(src.getName())
 {
 	(*this) = src;
 }
@@ -25,6 +25,7 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &src)
 		this->_grade = src.getGrade();
 	return (*this);
 };
+
 Bureaucrat::~Bureaucrat()
 {
 }
