@@ -27,16 +27,6 @@ private:
 	const int _requiredSignItGrade;
 	const int _requiredExecuteItGrade;
 
-	// Internal Exceptions
-	class GradeTooHighException : public std::exception
-	{
-		virtual const char *what() const throw();
-	};
-	class GradeTooLowException : public std::exception
-	{
-		virtual const char *what() const throw();
-	};
-
 public:
 	// Canonical AForm
 	AForm(const AForm &src);
@@ -55,6 +45,21 @@ public:
 	void beSigned(const Bureaucrat &b);
 
 	virtual void execute(Bureaucrat const &executor) const = 0;
+
+	// Internal Exceptions
+	class GradeTooHighException : public std::exception
+	{
+		virtual const char *what() const throw();
+	};
+	class GradeTooLowException : public std::exception
+	{
+		virtual const char *what() const throw();
+	};
+
+	class FormNotSignedException : public std::exception
+	{
+		virtual const char *what() const throw();
+	};
 };
 
 std::ostream &operator<<(std::ostream &os, const AForm &src);

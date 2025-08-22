@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 11:49:33 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/22 10:57:07 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/22 11:14:50 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,9 @@ const char *AForm::GradeTooHighException::what() const throw()
 const char *AForm::GradeTooLowException::what() const throw()
 {
 	return "Grade too low!\n";
+}
+
+const char *AForm::FormNotSignedException::what() const throw()
+{
+	return "Form is not signed!\n";
 }
