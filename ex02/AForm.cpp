@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 11:49:33 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/20 12:26:50 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/22 10:57:07 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-/* *** Canonical Form *** */
+/* *** Canonical AForm *** */
 
-Form::Form(const Form &src) : _name(src.getName()),
-							  _requiredSignItGrade(src.getRequiredSignItGrade()),
-							  _requiredExecuteItGrade(src.getRequiredExecuteItGrade())
+AForm::AForm(const AForm &src) : _name(src.getName()),
+								 _requiredSignItGrade(src.getRequiredSignItGrade()),
+								 _requiredExecuteItGrade(src.getRequiredExecuteItGrade())
 {
 	(*this) = src;
 }
 
-Form &Form::operator=(const Form &src)
+AForm &AForm::operator=(const AForm &src)
 {
 
 	if (this != &src)
@@ -29,16 +29,16 @@ Form &Form::operator=(const Form &src)
 	return (*this);
 }
 
-Form::~Form() {}
+AForm::~AForm() {}
 
 /* *** Custom Constructor *** */
 
-Form::Form(const std::string &name,
-		   int requiredSignItGrade,
-		   int requiredExecuteItGrade) : _name(name),
-										 _isSigned(false),
-										 _requiredSignItGrade(requiredSignItGrade),
-										 _requiredExecuteItGrade(requiredExecuteItGrade)
+AForm::AForm(const std::string &name,
+			 int requiredSignItGrade,
+			 int requiredExecuteItGrade) : _name(name),
+										   _isSigned(false),
+										   _requiredSignItGrade(requiredSignItGrade),
+										   _requiredExecuteItGrade(requiredExecuteItGrade)
 {
 	if (requiredSignItGrade < 1 || requiredExecuteItGrade < 1)
 		throw GradeTooHighException();
@@ -48,36 +48,36 @@ Form::Form(const std::string &name,
 
 /* *** Getters *** */
 
-const std::string &Form::getName() const
+const std::string &AForm::getName() const
 {
 	return (this->_name);
 }
 
-bool Form::getIsSigned() const
+bool AForm::getIsSigned() const
 {
 	return _isSigned;
 }
 
-int Form::getRequiredSignItGrade() const
+int AForm::getRequiredSignItGrade() const
 {
 	return _requiredSignItGrade;
 }
 
-int Form::getRequiredExecuteItGrade() const
+int AForm::getRequiredExecuteItGrade() const
 {
 	return _requiredExecuteItGrade;
 }
 
-void Form::beSigned(const Bureaucrat &b)
+void AForm::beSigned(const Bureaucrat &b)
 {
 	if (b.getGrade() > this->_requiredSignItGrade)
 		throw GradeTooLowException();
 	_isSigned = true;
 }
 
-std::ostream &operator<<(std::ostream &os, const Form &src)
+std::ostream &operator<<(std::ostream &os, const AForm &src)
 {
-	os << "Form: " << src.getName()
+	os << "AForm: " << src.getName()
 	   << ", Signed: " << (src.getIsSigned() ? "Yes" : "No")
 	   << ", Required Sign Grade: " << src.getRequiredSignItGrade()
 	   << ", Required Execute Grade: " << src.getRequiredExecuteItGrade();
@@ -86,12 +86,12 @@ std::ostream &operator<<(std::ostream &os, const Form &src)
 
 /* *** Internal Exceptions *** */
 
-const char *Form::GradeTooHighException::what() const throw()
+const char *AForm::GradeTooHighException::what() const throw()
 {
 	return "Grade too high!\n";
 }
 
-const char *Form::GradeTooLowException::what() const throw()
+const char *AForm::GradeTooLowException::what() const throw()
 {
 	return "Grade too low!\n";
 }

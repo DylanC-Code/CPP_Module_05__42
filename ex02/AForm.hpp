@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -19,7 +19,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 private:
 	const std::string _name;
@@ -38,13 +38,13 @@ private:
 	};
 
 public:
-	// Canonical Form
-	Form(const Form &src);
-	Form &operator=(const Form &src);
-	~Form();
+	// Canonical AForm
+	AForm(const AForm &src);
+	AForm &operator=(const AForm &src);
+	~AForm();
 
 	// Custom Constructor
-	Form(const std::string &name, int requiredSignItGrade, int requiredExecuteItGrade);
+	AForm(const std::string &name, int requiredSignItGrade, int requiredExecuteItGrade);
 
 	// Getters
 	const std::string &getName() const;
@@ -53,8 +53,10 @@ public:
 	int getRequiredExecuteItGrade() const;
 
 	void beSigned(const Bureaucrat &b);
+
+	virtual void execute(Bureaucrat const &executor) const = 0;
 };
 
-std::ostream &operator<<(std::ostream &os, const Form &src);
+std::ostream &operator<<(std::ostream &os, const AForm &src);
 
 #endif
