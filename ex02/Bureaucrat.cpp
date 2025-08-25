@@ -6,13 +6,13 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 10:00:07 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/20 12:11:34 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/25 09:32:18 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-/* *** Canonical Form *** */
+/* *** Canonical AForm *** */
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src) : _name(src.getName())
 {
@@ -25,6 +25,7 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &src)
 		this->_grade = src.getGrade();
 	return (*this);
 };
+
 Bureaucrat::~Bureaucrat()
 {
 }
@@ -66,7 +67,7 @@ void Bureaucrat::decrementGrade()
 	this->_grade++;
 }
 
-void Bureaucrat::signForm(Form &form) const
+void Bureaucrat::signForm(AForm &form) const
 {
 	try
 	{
@@ -76,6 +77,19 @@ void Bureaucrat::signForm(Form &form) const
 	catch (const std::exception &e)
 	{
 		std::cout << this->_name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const &form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->_name << " executed " << form.getName() << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << this->_name << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
 

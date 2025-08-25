@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 09:56:36 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/20 12:16:50 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/22 11:28:10 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 #include <iostream>
 #include <string>
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -26,7 +26,7 @@ private:
 	int _grade;
 
 public:
-	// Canonical Form
+	// Canonical AForm
 	Bureaucrat(Bureaucrat const &src);
 	~Bureaucrat();
 	Bureaucrat &operator=(Bureaucrat const &src);
@@ -41,7 +41,8 @@ public:
 	void incrementGrade();
 	void decrementGrade();
 
-	void signForm(Form &form) const;
+	void signForm(AForm &form) const;
+	void executeForm(AForm const &form) const;
 
 	// Internal Exceptions
 	class GradeTooHighException : public std::exception

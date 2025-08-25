@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:05:01 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/22 11:20:47 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/25 09:33:32 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		throw AForm::FormNotSignedException();
 	if (executor.getGrade() > this->getRequiredExecuteItGrade())
 		throw AForm::GradeTooLowException();
-	std::string fileName = this->getName() + "_shrubbery";
+	std::string fileName = this->_target + "_shrubbery";
 	std::ofstream outFile(fileName.c_str());
 	if (!outFile)
 	{
