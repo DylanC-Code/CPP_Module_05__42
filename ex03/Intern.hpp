@@ -6,7 +6,7 @@
 /*   By: dcastor <dcastor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 09:37:48 by dcastor           #+#    #+#             */
-/*   Updated: 2025/08/25 09:42:13 by dcastor          ###   ########.fr       */
+/*   Updated: 2025/08/25 10:04:10 by dcastor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #define INTERN_HPP
 
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 class Intern
 {
@@ -27,6 +30,7 @@ public:
 	// Custom Constructor
 	Intern();
 
+	// Specific Member Functions
 	AForm *makeForm(const std::string &formName, const std::string &target) const;
 };
 

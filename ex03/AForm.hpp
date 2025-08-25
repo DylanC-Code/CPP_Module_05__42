@@ -31,7 +31,7 @@ public:
 	// Canonical AForm
 	AForm(const AForm &src);
 	AForm &operator=(const AForm &src);
-	~AForm();
+	virtual ~AForm();
 
 	// Custom Constructor
 	AForm(const std::string &name, int requiredSignItGrade, int requiredExecuteItGrade);
